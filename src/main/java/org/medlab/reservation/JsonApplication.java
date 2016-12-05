@@ -12,7 +12,8 @@ public class JsonApplication extends ResourceConfig {
         super(
                 FlightResource.class,
                 ReservationResource.class,
-                JacksonFeature.class
+                JacksonFeature.class,
+                FlightResource_FROM_OTHER_API.class
         );
     }
 

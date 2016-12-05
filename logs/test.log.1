@@ -1,0 +1,893 @@
+2016-12-05 12:13:20,920 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,921 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,922 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.flightInstance.flight)
+                - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airline, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.flightInstance.flight.airline)
+                - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:4>, path=org.medlab.reservation.entity.Reservation.flightInstance.flight.destination)
+                - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:5>, path=org.medlab.reservation.entity.Reservation.flightInstance.flight.origin)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:6>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:7>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+          - JOIN (JoinDefinedByMetadata(flightInstance)) : <gen:0> -> <gen:1>
+             - EntityQuerySpaceImpl(uid=<gen:1>, entity=org.medlab.reservation.entity.FlightInstance)
+                - SQL table alias mapping - flightinst1_
+                - alias suffix - 1_
+                - suffixed key columns - {flight_i1_2_1_}
+                - JOIN (JoinDefinedByMetadata(flight)) : <gen:1> -> <gen:2>
+                   - EntityQuerySpaceImpl(uid=<gen:2>, entity=org.medlab.reservation.entity.Flight)
+                      - SQL table alias mapping - flight2_
+                      - alias suffix - 2_
+                      - suffixed key columns - {flight_n1_3_2_}
+          - JOIN (JoinDefinedByMetadata(passengers)) : <gen:0> -> <gen:6>
+             - CollectionQuerySpaceImpl(uid=<gen:6>, collection=org.medlab.reservation.entity.Reservation.passengers)
+                - SQL table alias mapping - passengers3_
+                - alias suffix - 3_
+                - suffixed key columns - {reservat4_5_3_}
+                - entity-element alias suffix - 4_
+                - 4_entity-element suffixed key columns - id1_4_4_
+                - JOIN (JoinDefinedByMetadata(elements)) : <gen:6> -> <gen:7>
+                   - EntityQuerySpaceImpl(uid=<gen:7>, entity=org.medlab.reservation.entity.Passenger)
+                      - SQL table alias mapping - passengers3_
+                      - alias suffix - 4_
+                      - suffixed key columns - {id1_4_4_}
+
+2016-12-05 12:13:20,922 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [READ]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_, flightinst1_.flight_id as flight_i1_2_1_, flightinst1_.available_seats as availabl2_2_1_, flightinst1_.date as date3_2_1_, flightinst1_.flight_fk as flight_f5_2_1_, flightinst1_.price as price4_2_1_, flight2_.flight_number as flight_n1_3_2_, flight2_.airline_fk as airline_4_3_2_, flight2_.destination_fk as destinat5_3_2_, flight2_.flight_time as flight_t2_3_2_, flight2_.origin_fk as origin_f6_3_2_, flight2_.seats as seats3_3_2_, passengers3_.reservation_fk as reservat4_5_3_, passengers3_.id as id1_4_3_, passengers3_.id as id1_4_4_, passengers3_.first_name as first_na2_4_4_, passengers3_.last_name as last_nam3_4_4_, passengers3_.reservation_fk as reservat4_4_4_ from reservations reservatio0_ left outer join flight_instances flightinst1_ on reservatio0_.flight_instance_fk=flightinst1_.flight_id left outer join flights flight2_ on flightinst1_.flight_fk=flight2_.flight_number left outer join passengers passengers3_ on reservatio0_.id=passengers3_.reservation_fk where reservatio0_.id=?
+2016-12-05 12:13:20,923 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@659925f4]
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,923 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@47f08b81]
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,923 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@b9dfc5a]
+2016-12-05 12:13:20,923 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@2787de58]
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,923 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,923 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,923 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,924 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,924 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [UPGRADE]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,924 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@659a2455]
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,924 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@426e505c]
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,924 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@5b022357]
+2016-12-05 12:13:20,924 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6f8e0cee]
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,924 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,925 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,925 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,925 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,925 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [UPGRADE_NOWAIT]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,925 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@614aeccc]
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,925 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@1bc425e7]
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,925 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@4b2a30d]
+2016-12-05 12:13:20,925 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@322803db]
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,925 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,926 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,926 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,926 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,926 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,926 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [UPGRADE_SKIPLOCKED]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,926 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@56ba8773]
+2016-12-05 12:13:20,926 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,926 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7dd00705]
+2016-12-05 12:13:20,926 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,926 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,926 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@f14e5bf]
+2016-12-05 12:13:20,926 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@d176a31]
+2016-12-05 12:13:20,927 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,927 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,927 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,927 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,927 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,927 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,927 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,927 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [FORCE]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,927 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3a91d146]
+2016-12-05 12:13:20,927 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,927 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6f952d6c]
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,928 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@5965844d]
+2016-12-05 12:13:20,928 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6d4a65c6]
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,928 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,928 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,928 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,928 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,928 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [PESSIMISTIC_READ]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? lock in share mode
+2016-12-05 12:13:20,928 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@aa004a0]
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,929 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@392a04e7]
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,929 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@7f02251]
+2016-12-05 12:13:20,929 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@dffa30b]
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,929 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,929 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,930 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,930 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,930 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [PESSIMISTIC_WRITE]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,930 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4d8126f]
+2016-12-05 12:13:20,930 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,930 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@6b587673]
+2016-12-05 12:13:20,930 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,931 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,931 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@1bcf67e8]
+2016-12-05 12:13:20,931 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@5f404594]
+2016-12-05 12:13:20,931 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,931 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,931 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,931 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,931 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,931 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,931 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,932 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [PESSIMISTIC_FORCE_INCREMENT]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=? for update
+2016-12-05 12:13:20,932 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@53692008]
+2016-12-05 12:13:20,932 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,932 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@1bbae752]
+2016-12-05 12:13:20,932 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,932 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,932 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@460b6d54]
+2016-12-05 12:13:20,932 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@5cf87cfd]
+2016-12-05 12:13:20,932 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,933 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,933 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,933 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,933 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [OPTIMISTIC]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=?
+2016-12-05 12:13:20,933 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@76075d65]
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : flightInstance
+2016-12-05 12:13:20,933 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@27b71f50]
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : numberOfSeats
+2016-12-05 12:13:20,933 [DEBUG]- Visiting attribute path : passengers
+2016-12-05 12:13:20,933 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@383790cf]
+2016-12-05 12:13:20,934 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@74971ed9]
+2016-12-05 12:13:20,934 [DEBUG]- Visiting attribute path : reserveeEmail
+2016-12-05 12:13:20,934 [DEBUG]- Visiting attribute path : reserveeName
+2016-12-05 12:13:20,934 [DEBUG]- Visiting attribute path : reserveePhone
+2016-12-05 12:13:20,934 [DEBUG]- Visiting attribute path : totalPrice
+2016-12-05 12:13:20,934 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,934 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,934 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.Reservation)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.Reservation, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.Reservation)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.Reservation.flightInstance)
+          - CollectionAttributeFetchImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.Reservation.passengers)
+             - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.Reservation.passengers.<elements>)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.Reservation)
+          - SQL table alias mapping - reservatio0_
+          - alias suffix - 0_
+          - suffixed key columns - {id1_5_0_}
+
+2016-12-05 12:13:20,934 [DEBUG]- Static select for entity org.medlab.reservation.entity.Reservation [OPTIMISTIC_FORCE_INCREMENT]: select reservatio0_.id as id1_5_0_, reservatio0_.flight_instance_fk as flight_i7_5_0_, reservatio0_.number_of_seats as number_o2_5_0_, reservatio0_.reservee_email as reservee3_5_0_, reservatio0_.reservee_name as reservee4_5_0_, reservatio0_.reservee_phone as reservee5_5_0_, reservatio0_.total_price as total_pr6_5_0_ from reservations reservatio0_ where reservatio0_.id=?
+2016-12-05 12:13:20,935 [DEBUG]- Static select for action ACTION_MERGE on entity org.medlab.reservation.entity.Reservation: select reservatio0_.id as id1_5_3_, reservatio0_.flight_instance_fk as flight_i7_5_3_, reservatio0_.number_of_seats as number_o2_5_3_, reservatio0_.reservee_email as reservee3_5_3_, reservatio0_.reservee_name as reservee4_5_3_, reservatio0_.reservee_phone as reservee5_5_3_, reservatio0_.total_price as total_pr6_5_3_, flightinst1_.flight_id as flight_i1_2_0_, flightinst1_.available_seats as availabl2_2_0_, flightinst1_.date as date3_2_0_, flightinst1_.flight_fk as flight_f5_2_0_, flightinst1_.price as price4_2_0_, flight2_.flight_number as flight_n1_3_1_, flight2_.airline_fk as airline_4_3_1_, flight2_.destination_fk as destinat5_3_1_, flight2_.flight_time as flight_t2_3_1_, flight2_.origin_fk as origin_f6_3_1_, flight2_.seats as seats3_3_1_, passengers3_.reservation_fk as reservat4_5_5_, passengers3_.id as id1_4_5_, passengers3_.id as id1_4_2_, passengers3_.first_name as first_na2_4_2_, passengers3_.last_name as last_nam3_4_2_, passengers3_.reservation_fk as reservat4_4_2_ from reservations reservatio0_ left outer join flight_instances flightinst1_ on reservatio0_.flight_instance_fk=flightinst1_.flight_id left outer join flights flight2_ on flightinst1_.flight_fk=flight2_.flight_number left outer join passengers passengers3_ on reservatio0_.id=passengers3_.reservation_fk where reservatio0_.id=?
+2016-12-05 12:13:20,935 [DEBUG]- Static select for action ACTION_REFRESH on entity org.medlab.reservation.entity.Reservation: select reservatio0_.id as id1_5_1_, reservatio0_.flight_instance_fk as flight_i7_5_1_, reservatio0_.number_of_seats as number_o2_5_1_, reservatio0_.reservee_email as reservee3_5_1_, reservatio0_.reservee_name as reservee4_5_1_, reservatio0_.reservee_phone as reservee5_5_1_, reservatio0_.total_price as total_pr6_5_1_, passengers1_.reservation_fk as reservat4_5_3_, passengers1_.id as id1_4_3_, passengers1_.id as id1_4_0_, passengers1_.first_name as first_na2_4_0_, passengers1_.last_name as last_nam3_4_0_, passengers1_.reservation_fk as reservat4_4_0_ from reservations reservatio0_ left outer join passengers passengers1_ on reservatio0_.id=passengers1_.reservation_fk where reservatio0_.id=?
+2016-12-05 12:13:20,935 [DEBUG]- Static SQL for entity: org.medlab.reservation.entity.FlightInstance
+2016-12-05 12:13:20,935 [DEBUG]-  Version select: select flight_id from flight_instances where flight_id =?
+2016-12-05 12:13:20,935 [DEBUG]-  Snapshot select: select flightinst_.flight_id, flightinst_.available_seats as availabl2_2_, flightinst_.date as date3_2_, flightinst_.flight_fk as flight_f5_2_, flightinst_.price as price4_2_ from flight_instances flightinst_ where flightinst_.flight_id=?
+2016-12-05 12:13:20,936 [DEBUG]-  Insert 0: insert into flight_instances (available_seats, date, flight_fk, price, flight_id) values (?, ?, ?, ?, ?)
+2016-12-05 12:13:20,936 [DEBUG]-  Update 0: update flight_instances set available_seats=?, date=?, flight_fk=?, price=? where flight_id=?
+2016-12-05 12:13:20,936 [DEBUG]-  Delete 0: delete from flight_instances where flight_id=?
+2016-12-05 12:13:20,936 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@131fcb6f]
+2016-12-05 12:13:20,936 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,936 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,936 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,936 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@878537d]
+2016-12-05 12:13:20,936 [DEBUG]- Visiting attribute path : flight.airline
+2016-12-05 12:13:20,936 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@29fc1a2b]
+2016-12-05 12:13:20,936 [DEBUG]- Visiting attribute path : flight.destination
+2016-12-05 12:13:20,937 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@7a24eb3]
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.destination.city
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.destination.country
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.destination.name
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.destination.timeZone
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.flightTime
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.origin
+2016-12-05 12:13:20,937 [DEBUG]- Adding QuerySpace : uid = <gen:4> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@25d3cfc8]
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.origin.city
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.origin.country
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.origin.name
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.origin.timeZone
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : flight.seats
+2016-12-05 12:13:20,937 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,937 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,937 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,938 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airline, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.FlightInstance.flight.airline)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.FlightInstance.flight.destination)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:4>, path=org.medlab.reservation.entity.FlightInstance.flight.origin)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+          - JOIN (JoinDefinedByMetadata(flight)) : <gen:0> -> <gen:1>
+             - EntityQuerySpaceImpl(uid=<gen:1>, entity=org.medlab.reservation.entity.Flight)
+                - SQL table alias mapping - flight1_
+                - alias suffix - 1_
+                - suffixed key columns - {flight_n1_3_1_}
+                - JOIN (JoinDefinedByMetadata(airline)) : <gen:1> -> <gen:2>
+                   - EntityQuerySpaceImpl(uid=<gen:2>, entity=org.medlab.reservation.entity.Airline)
+                      - SQL table alias mapping - airline2_
+                      - alias suffix - 2_
+                      - suffixed key columns - {name1_0_2_}
+                - JOIN (JoinDefinedByMetadata(destination)) : <gen:1> -> <gen:3>
+                   - EntityQuerySpaceImpl(uid=<gen:3>, entity=org.medlab.reservation.entity.Airport)
+                      - SQL table alias mapping - airport3_
+                      - alias suffix - 3_
+                      - suffixed key columns - {iatacode1_1_3_}
+                - JOIN (JoinDefinedByMetadata(origin)) : <gen:1> -> <gen:4>
+                   - EntityQuerySpaceImpl(uid=<gen:4>, entity=org.medlab.reservation.entity.Airport)
+                      - SQL table alias mapping - airport4_
+                      - alias suffix - 4_
+                      - suffixed key columns - {iatacode1_1_4_}
+
+2016-12-05 12:13:20,938 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [NONE]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_, flight1_.flight_number as flight_n1_3_1_, flight1_.airline_fk as airline_4_3_1_, flight1_.destination_fk as destinat5_3_1_, flight1_.flight_time as flight_t2_3_1_, flight1_.origin_fk as origin_f6_3_1_, flight1_.seats as seats3_3_1_, airline2_.name as name1_0_2_, airport3_.iatacode as iatacode1_1_3_, airport3_.city as city2_1_3_, airport3_.country as country3_1_3_, airport3_.name as name4_1_3_, airport3_.time_zone as time_zon5_1_3_, airport4_.iatacode as iatacode1_1_4_, airport4_.city as city2_1_4_, airport4_.country as country3_1_4_, airport4_.name as name4_1_4_, airport4_.time_zone as time_zon5_1_4_ from flight_instances flightinst0_ left outer join flights flight1_ on flightinst0_.flight_fk=flight1_.flight_number left outer join airlines airline2_ on flight1_.airline_fk=airline2_.name left outer join airports airport3_ on flight1_.destination_fk=airport3_.iatacode left outer join airports airport4_ on flight1_.origin_fk=airport4_.iatacode where flightinst0_.flight_id=?
+2016-12-05 12:13:20,938 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@2571066a]
+2016-12-05 12:13:20,938 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,938 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,938 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,939 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4fe875be]
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.airline
+2016-12-05 12:13:20,939 [DEBUG]- Adding QuerySpace : uid = <gen:2> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4a9486c0]
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.destination
+2016-12-05 12:13:20,939 [DEBUG]- Adding QuerySpace : uid = <gen:3> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@40ee0a22]
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.destination.city
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.destination.country
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.destination.name
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.destination.timeZone
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.flightTime
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.origin
+2016-12-05 12:13:20,939 [DEBUG]- Adding QuerySpace : uid = <gen:4> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@15923407]
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.origin.city
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.origin.country
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.origin.name
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.origin.timeZone
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : flight.seats
+2016-12-05 12:13:20,939 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,939 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,940 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,941 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airline, querySpaceUid=<gen:2>, path=org.medlab.reservation.entity.FlightInstance.flight.airline)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:3>, path=org.medlab.reservation.entity.FlightInstance.flight.destination)
+             - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Airport, querySpaceUid=<gen:4>, path=org.medlab.reservation.entity.FlightInstance.flight.origin)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+          - JOIN (JoinDefinedByMetadata(flight)) : <gen:0> -> <gen:1>
+             - EntityQuerySpaceImpl(uid=<gen:1>, entity=org.medlab.reservation.entity.Flight)
+                - SQL table alias mapping - flight1_
+                - alias suffix - 1_
+                - suffixed key columns - {flight_n1_3_1_}
+                - JOIN (JoinDefinedByMetadata(airline)) : <gen:1> -> <gen:2>
+                   - EntityQuerySpaceImpl(uid=<gen:2>, entity=org.medlab.reservation.entity.Airline)
+                      - SQL table alias mapping - airline2_
+                      - alias suffix - 2_
+                      - suffixed key columns - {name1_0_2_}
+                - JOIN (JoinDefinedByMetadata(destination)) : <gen:1> -> <gen:3>
+                   - EntityQuerySpaceImpl(uid=<gen:3>, entity=org.medlab.reservation.entity.Airport)
+                      - SQL table alias mapping - airport3_
+                      - alias suffix - 3_
+                      - suffixed key columns - {iatacode1_1_3_}
+                - JOIN (JoinDefinedByMetadata(origin)) : <gen:1> -> <gen:4>
+                   - EntityQuerySpaceImpl(uid=<gen:4>, entity=org.medlab.reservation.entity.Airport)
+                      - SQL table alias mapping - airport4_
+                      - alias suffix - 4_
+                      - suffixed key columns - {iatacode1_1_4_}
+
+2016-12-05 12:13:20,941 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [READ]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_, flight1_.flight_number as flight_n1_3_1_, flight1_.airline_fk as airline_4_3_1_, flight1_.destination_fk as destinat5_3_1_, flight1_.flight_time as flight_t2_3_1_, flight1_.origin_fk as origin_f6_3_1_, flight1_.seats as seats3_3_1_, airline2_.name as name1_0_2_, airport3_.iatacode as iatacode1_1_3_, airport3_.city as city2_1_3_, airport3_.country as country3_1_3_, airport3_.name as name4_1_3_, airport3_.time_zone as time_zon5_1_3_, airport4_.iatacode as iatacode1_1_4_, airport4_.city as city2_1_4_, airport4_.country as country3_1_4_, airport4_.name as name4_1_4_, airport4_.time_zone as time_zon5_1_4_ from flight_instances flightinst0_ left outer join flights flight1_ on flightinst0_.flight_fk=flight1_.flight_number left outer join airlines airline2_ on flight1_.airline_fk=airline2_.name left outer join airports airport3_ on flight1_.destination_fk=airport3_.iatacode left outer join airports airport4_ on flight1_.origin_fk=airport4_.iatacode where flightinst0_.flight_id=?
+2016-12-05 12:13:20,941 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@57540fd0]
+2016-12-05 12:13:20,941 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,942 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,942 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,942 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@58cec85b]
+2016-12-05 12:13:20,942 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,942 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,942 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,942 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,942 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [UPGRADE]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,942 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@629f066f]
+2016-12-05 12:13:20,942 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,942 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,943 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@ecfbe91]
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,943 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,943 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,943 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,943 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [UPGRADE_NOWAIT]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,943 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@20ed3303]
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,943 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3a627c80]
+2016-12-05 12:13:20,943 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,943 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,944 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,944 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,944 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [UPGRADE_SKIPLOCKED]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,944 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@49aa766b]
+2016-12-05 12:13:20,944 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,944 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,944 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,944 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@65004ff6]
+2016-12-05 12:13:20,944 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,944 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,945 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,945 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,945 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [FORCE]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,946 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4cafa9aa]
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,946 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@67001148]
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,946 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,946 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,946 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,946 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [PESSIMISTIC_READ]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? lock in share mode
+2016-12-05 12:13:20,946 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@989da1]
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,946 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,947 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@3eed0f5]
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,947 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,947 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,947 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,947 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [PESSIMISTIC_WRITE]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,947 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@64030b91]
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,947 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4d23015c]
+2016-12-05 12:13:20,947 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,948 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,948 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,948 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,948 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [PESSIMISTIC_FORCE_INCREMENT]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=? for update
+2016-12-05 12:13:20,948 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@383f1975]
+2016-12-05 12:13:20,949 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,949 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,949 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,949 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@73a00e09]
+2016-12-05 12:13:20,949 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,949 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,949 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,949 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,949 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [OPTIMISTIC]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=?
+2016-12-05 12:13:20,949 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@26dcd8c0]
+2016-12-05 12:13:20,950 [DEBUG]- Visiting attribute path : availableSeats
+2016-12-05 12:13:20,950 [DEBUG]- Visiting attribute path : date
+2016-12-05 12:13:20,950 [DEBUG]- Visiting attribute path : flight
+2016-12-05 12:13:20,950 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@444548a0]
+2016-12-05 12:13:20,950 [DEBUG]- Visiting attribute path : price
+2016-12-05 12:13:20,950 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,950 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,950 [DEBUG]- LoadPlan(entity=org.medlab.reservation.entity.FlightInstance)
+    - Returns
+       - EntityReturnImpl(entity=org.medlab.reservation.entity.FlightInstance, querySpaceUid=<gen:0>, path=org.medlab.reservation.entity.FlightInstance)
+          - EntityAttributeFetchImpl(entity=org.medlab.reservation.entity.Flight, querySpaceUid=<gen:1>, path=org.medlab.reservation.entity.FlightInstance.flight)
+    - QuerySpaces
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=org.medlab.reservation.entity.FlightInstance)
+          - SQL table alias mapping - flightinst0_
+          - alias suffix - 0_
+          - suffixed key columns - {flight_i1_2_0_}
+
+2016-12-05 12:13:20,950 [DEBUG]- Static select for entity org.medlab.reservation.entity.FlightInstance [OPTIMISTIC_FORCE_INCREMENT]: select flightinst0_.flight_id as flight_i1_2_0_, flightinst0_.available_seats as availabl2_2_0_, flightinst0_.date as date3_2_0_, flightinst0_.flight_fk as flight_f5_2_0_, flightinst0_.price as price4_2_0_ from flight_instances flightinst0_ where flightinst0_.flight_id=?
+2016-12-05 12:13:20,950 [DEBUG]- Static select for action ACTION_MERGE on entity org.medlab.reservation.entity.FlightInstance: select flightinst0_.flight_id as flight_i1_2_4_, flightinst0_.available_seats as availabl2_2_4_, flightinst0_.date as date3_2_4_, flightinst0_.flight_fk as flight_f5_2_4_, flightinst0_.price as price4_2_4_, flight1_.flight_number as flight_n1_3_0_, flight1_.airline_fk as airline_4_3_0_, flight1_.destination_fk as destinat5_3_0_, flight1_.flight_time as flight_t2_3_0_, flight1_.origin_fk as origin_f6_3_0_, flight1_.seats as seats3_3_0_, airline2_.name as name1_0_1_, airport3_.iatacode as iatacode1_1_2_, airport3_.city as city2_1_2_, airport3_.country as country3_1_2_, airport3_.name as name4_1_2_, airport3_.time_zone as time_zon5_1_2_, airport4_.iatacode as iatacode1_1_3_, airport4_.city as city2_1_3_, airport4_.country as country3_1_3_, airport4_.name as name4_1_3_, airport4_.time_zone as time_zon5_1_3_ from flight_instances flightinst0_ left outer join flights flight1_ on flightinst0_.flight_fk=flight1_.flight_number left outer join airlines airline2_ on flight1_.airline_fk=airline2_.name left outer join airports airport3_ on flight1_.destination_fk=airport3_.iatacode left outer join airports airport4_ on flight1_.origin_fk=airport4_.iatacode where flightinst0_.flight_id=?
+2016-12-05 12:13:20,951 [DEBUG]- Static select for action ACTION_REFRESH on entity org.medlab.reservation.entity.FlightInstance: select flightinst0_.flight_id as flight_i1_2_4_, flightinst0_.available_seats as availabl2_2_4_, flightinst0_.date as date3_2_4_, flightinst0_.flight_fk as flight_f5_2_4_, flightinst0_.price as price4_2_4_, flight1_.flight_number as flight_n1_3_0_, flight1_.airline_fk as airline_4_3_0_, flight1_.destination_fk as destinat5_3_0_, flight1_.flight_time as flight_t2_3_0_, flight1_.origin_fk as origin_f6_3_0_, flight1_.seats as seats3_3_0_, airline2_.name as name1_0_1_, airport3_.iatacode as iatacode1_1_2_, airport3_.city as city2_1_2_, airport3_.country as country3_1_2_, airport3_.name as name4_1_2_, airport3_.time_zone as time_zon5_1_2_, airport4_.iatacode as iatacode1_1_3_, airport4_.city as city2_1_3_, airport4_.country as country3_1_3_, airport4_.name as name4_1_3_, airport4_.time_zone as time_zon5_1_3_ from flight_instances flightinst0_ left outer join flights flight1_ on flightinst0_.flight_fk=flight1_.flight_number left outer join airlines airline2_ on flight1_.airline_fk=airline2_.name left outer join airports airport3_ on flight1_.destination_fk=airport3_.iatacode left outer join airports airport4_ on flight1_.origin_fk=airport4_.iatacode where flightinst0_.flight_id=?
+2016-12-05 12:13:20,957 [DEBUG]- Adding QuerySpace : uid = <gen:0> -> org.hibernate.loader.plan.build.internal.spaces.CollectionQuerySpaceImpl@660591fb]
+2016-12-05 12:13:20,957 [DEBUG]- Adding QuerySpace : uid = <gen:1> -> org.hibernate.loader.plan.build.internal.spaces.EntityQuerySpaceImpl@4a55a6e8]
+2016-12-05 12:13:20,957 [DEBUG]- Visiting attribute path : firstName
+2016-12-05 12:13:20,957 [DEBUG]- Visiting attribute path : lastName
+2016-12-05 12:13:20,957 [DEBUG]- Visiting attribute path : reservation
+2016-12-05 12:13:20,957 [DEBUG]- Property path deemed to be circular : reservation
+2016-12-05 12:13:20,957 [DEBUG]- Building LoadPlan...
+2016-12-05 12:13:20,958 [DEBUG]- processing queryspace <gen:0>
+2016-12-05 12:13:20,959 [DEBUG]- LoadPlan(collection=org.medlab.reservation.entity.Reservation.passengers)
+    - Returns
+       - CollectionReturnImpl(collection=org.medlab.reservation.entity.Reservation.passengers, querySpaceUid=<gen:0>, path=[org.medlab.reservation.entity.Reservation.passengers])
+          - (collection element) CollectionFetchableElementEntityGraph(entity=org.medlab.reservation.entity.Passenger, querySpaceUid=<gen:1>, path=[org.medlab.reservation.entity.Reservation.passengers].<elements>)
+    - QuerySpaces
+       - CollectionQuerySpaceImpl(uid=<gen:0>, collection=org.medlab.reservation.entity.Reservation.passengers)
+          - SQL table alias mapping - passengers0_
+          - alias suffix - 0_
+          - suffixed key columns - {reservat4_5_0_}
+          - entity-element alias suffix - 1_
+          - 1_entity-element suffixed key columns - id1_4_1_
+          - JOIN (JoinDefinedByMetadata(elements)) : <gen:0> -> <gen:1>
+             - EntityQuerySpaceImpl(uid=<gen:1>, entity=org.medlab.reservation.entity.Passenger)
+                - SQL table alias mapping - passengers0_
+                - alias suffix - 1_
+                - suffixed key columns - {id1_4_1_}
+
+2016-12-05 12:13:20,959 [DEBUG]- Static select for collection org.medlab.reservation.entity.Reservation.passengers: select passengers0_.reservation_fk as reservat4_5_0_, passengers0_.id as id1_4_0_, passengers0_.id as id1_4_1_, passengers0_.first_name as first_na2_4_1_, passengers0_.last_name as last_nam3_4_1_, passengers0_.reservation_fk as reservat4_4_1_ from passengers passengers0_ where passengers0_.reservation_fk=?
+2016-12-05 12:13:21,021 [DEBUG]- Initializing SessionFactoryRegistry : org.hibernate.internal.SessionFactoryRegistry@325bb9a6
+2016-12-05 12:13:21,021 [DEBUG]- Registering SessionFactory: f5a68bfc-afe2-4dfd-89e0-67c1676a98c1 (<unnamed>)
+2016-12-05 12:13:21,021 [DEBUG]- Not binding SessionFactory to JNDI, no JNDI name configured
+2016-12-05 12:13:21,021 [DEBUG]- Instantiated session factory
+2016-12-05 12:13:21,025 [INFO ]- HHH000228: Running hbm2ddl schema update
+2016-12-05 12:13:21,025 [INFO ]- HHH000102: Fetching database metadata
+2016-12-05 12:13:21,028 [INFO ]- HHH000396: Updating schema
+2016-12-05 12:13:21,028 [DEBUG]- Processing hbm.xml files
+2016-12-05 12:13:21,028 [DEBUG]- Process annotated classes
+2016-12-05 12:13:21,028 [DEBUG]- Processing fk mappings (*ToOne and JoinedSubclass)
+2016-12-05 12:13:21,028 [DEBUG]- Processing extends queue
+2016-12-05 12:13:21,028 [DEBUG]- Processing extends queue
+2016-12-05 12:13:21,028 [DEBUG]- Processing collection mappings
+2016-12-05 12:13:21,028 [DEBUG]- Processing native query and ResultSetMapping mappings
+2016-12-05 12:13:21,028 [DEBUG]- Processing association property references
+2016-12-05 12:13:21,028 [DEBUG]- Creating tables' unique integer identifiers
+2016-12-05 12:13:21,028 [DEBUG]- Processing foreign key constraints
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.Flight
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.Airline
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.Airport
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.Airport
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.Reservation
+2016-12-05 12:13:21,028 [DEBUG]- Resolving reference to class: org.medlab.reservation.entity.FlightInstance
+2016-12-05 12:13:21,188 [INFO ]- HHH000261: Table found: reservation.airlines
+2016-12-05 12:13:21,188 [INFO ]- HHH000037: Columns: [name]
+2016-12-05 12:13:21,188 [INFO ]- HHH000108: Foreign keys: []
+2016-12-05 12:13:21,189 [INFO ]- HHH000126: Indexes: [primary]
+2016-12-05 12:13:21,335 [INFO ]- HHH000261: Table found: reservation.airports
+2016-12-05 12:13:21,335 [INFO ]- HHH000037: Columns: [country, city, name, time_zone, iatacode]
+2016-12-05 12:13:21,335 [INFO ]- HHH000108: Foreign keys: []
+2016-12-05 12:13:21,335 [INFO ]- HHH000126: Indexes: [primary]
+2016-12-05 12:13:21,484 [INFO ]- HHH000261: Table found: reservation.flight_instances
+2016-12-05 12:13:21,484 [INFO ]- HHH000037: Columns: [date, flight_fk, price, flight_id, available_seats]
+2016-12-05 12:13:21,484 [INFO ]- HHH000108: Foreign keys: [fk_bvcclnf85eu76ns8aqt8iabf9]
+2016-12-05 12:13:21,484 [INFO ]- HHH000126: Indexes: [fk_bvcclnf85eu76ns8aqt8iabf9, primary]
+2016-12-05 12:13:21,635 [INFO ]- HHH000261: Table found: reservation.flights
+2016-12-05 12:13:21,635 [INFO ]- HHH000037: Columns: [airline_fk, origin_fk, flight_number, flight_time, seats, destination_fk]
+2016-12-05 12:13:21,636 [INFO ]- HHH000108: Foreign keys: [fk_xlx10ux5fqygn2n97bvnmjac, fk_ms0p4umg3h3svupf6ngk067po, fk_ohvv1l7h9bkchxw8ob53jijtp]
+2016-12-05 12:13:21,636 [INFO ]- HHH000126: Indexes: [fk_xlx10ux5fqygn2n97bvnmjac, fk_ms0p4umg3h3svupf6ngk067po, fk_ohvv1l7h9bkchxw8ob53jijtp, primary]
+2016-12-05 12:13:21,790 [INFO ]- HHH000261: Table found: reservation.passengers
+2016-12-05 12:13:21,790 [INFO ]- HHH000037: Columns: [reservation_fk, last_name, id, first_name]
+2016-12-05 12:13:21,790 [INFO ]- HHH000108: Foreign keys: [fk_c9bk9p0t914h2c8f2kvifao8v]
+2016-12-05 12:13:21,790 [INFO ]- HHH000126: Indexes: [fk_c9bk9p0t914h2c8f2kvifao8v, primary]
+2016-12-05 12:13:21,933 [INFO ]- HHH000261: Table found: reservation.reservations
+2016-12-05 12:13:21,934 [INFO ]- HHH000037: Columns: [flight_instance_fk, reservee_email, total_price, reservee_name, reservee_phone, id, number_of_seats]
+2016-12-05 12:13:21,934 [INFO ]- HHH000108: Foreign keys: [fk_6myndnj83r3mp8f8m4cqex90f]
+2016-12-05 12:13:21,934 [INFO ]- HHH000126: Indexes: [fk_6myndnj83r3mp8f8m4cqex90f, primary]
+2016-12-05 12:13:21,934 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,935 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,935 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,936 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,936 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,936 [DEBUG]- Setting dialect [org.hibernate.dialect.MySQL5InnoDBDialect]
+2016-12-05 12:13:21,936 [INFO ]- HHH000232: Schema update complete
+2016-12-05 12:13:21,936 [DEBUG]- Checking 0 named HQL queries
+2016-12-05 12:13:21,937 [DEBUG]- Checking 0 named SQL queries
+2016-12-05 12:13:21,946 [DEBUG]- Statistics initialized [enabled=false]
+2016-12-05 12:13:21,951 [DEBUG]- No actions specified; doing nothing
+2016-12-05 12:13:22,018 [DEBUG]- Initializing EntityManagerFactoryRegistry : org.hibernate.jpa.internal.EntityManagerFactoryRegistry@de88ac6
+2016-12-05 12:13:22,018 [DEBUG]- Registering EntityManagerFactory: persistenceUnit 
+2016-12-05 12:13:22,022 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,023 [DEBUG]- Finished creating instance of bean 'entityManagerFactory'
+2016-12-05 12:13:22,023 [DEBUG]- Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6c130c45: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping,mvcCorsConfigurations,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter,mvcUriComponentsContributor,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,airlineDaoImpl,airportDaoImpl,flightDaoImpl,flightInstanceDaoImpl,genericDaoImpl,passengerDaoImpl,reservationDaoImpl,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,dataSource,entityManagerFactory,multipartResolver,transactionManager,org.springframework.transaction.config.internalTransactionalEventListenerFactory,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor]; root of factory hierarchy
+2016-12-05 12:13:22,023 [DEBUG]- Creating shared instance of singleton bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,023 [DEBUG]- Creating instance of bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,024 [DEBUG]- Eagerly caching bean 'mvcContentNegotiationManager' to allow for resolving potential circular references
+2016-12-05 12:13:22,036 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,038 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,038 [DEBUG]- Finished creating instance of bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,039 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping'
+2016-12-05 12:13:22,039 [DEBUG]- Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping'
+2016-12-05 12:13:22,053 [DEBUG]- Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping' to allow for resolving potential circular references
+2016-12-05 12:13:22,066 [DEBUG]- Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,066 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,067 [DEBUG]- Creating shared instance of singleton bean 'mvcCorsConfigurations'
+2016-12-05 12:13:22,067 [DEBUG]- Creating instance of bean 'mvcCorsConfigurations'
+2016-12-05 12:13:22,068 [DEBUG]- Eagerly caching bean 'mvcCorsConfigurations' to allow for resolving potential circular references
+2016-12-05 12:13:22,072 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,073 [DEBUG]- Finished creating instance of bean 'mvcCorsConfigurations'
+2016-12-05 12:13:22,075 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+2016-12-05 12:13:22,075 [DEBUG]- Creating instance of bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+2016-12-05 12:13:22,077 [DEBUG]- Creating instance of bean '(inner bean)#1abc9f14'
+2016-12-05 12:13:22,078 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,078 [DEBUG]- Creating instance of bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,078 [DEBUG]- Eagerly caching bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0' to allow for resolving potential circular references
+2016-12-05 12:13:22,081 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,121 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,121 [DEBUG]- Finished creating instance of bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,122 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,128 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,129 [DEBUG]- Finished creating instance of bean '(inner bean)#1abc9f14'
+2016-12-05 12:13:22,135 [DEBUG]- No property editor [org.springframework.web.context.request.WebRequestInterceptorEditor] found for type org.springframework.web.context.request.WebRequestInterceptor according to 'Editor' suffix convention
+2016-12-05 12:13:22,135 [DEBUG]- Eagerly caching bean 'org.springframework.web.servlet.handler.MappedInterceptor#0' to allow for resolving potential circular references
+2016-12-05 12:13:22,136 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,137 [DEBUG]- Finished creating instance of bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+2016-12-05 12:13:22,137 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping'
+2016-12-05 12:13:22,137 [DEBUG]- Looking for request mappings in application context: org.springframework.context.support.ClassPathXmlApplicationContext@3dd3bcd: startup date [Mon Dec 05 12:13:18 CET 2016]; root of context hierarchy
+2016-12-05 12:13:22,143 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,144 [DEBUG]- Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping'
+2016-12-05 12:13:22,144 [DEBUG]- Returning cached instance of singleton bean 'mvcCorsConfigurations'
+2016-12-05 12:13:22,144 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,144 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,144 [DEBUG]- Creating instance of bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,149 [DEBUG]- Eagerly caching bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0' to allow for resolving potential circular references
+2016-12-05 12:13:22,158 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,160 [DEBUG]- Found javax.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+2016-12-05 12:13:22,160 [DEBUG]- Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+2016-12-05 12:13:22,161 [DEBUG]- Failed to set up a Bean Validation provider
+javax.validation.ValidationException: Unable to instantiate Configuration.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:279)
+	at org.springframework.validation.beanvalidation.LocalValidatorFactoryBean.afterPropertiesSet(LocalValidatorFactoryBean.java:223)
+	at org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean.afterPropertiesSet(OptionalValidatorFactoryBean.java:40)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:839)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:538)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at org.medlab.reservation.FlightResourceTest.setUpClass(FlightResourceTest.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: javax.validation.ValidationException: HV000183: Unable to load 'javax.el.ExpressionFactory'. Check that you have the EL dependencies on the classpath
+	at org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator.<init>(ResourceBundleMessageInterpolator.java:172)
+	at org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator.<init>(ResourceBundleMessageInterpolator.java:118)
+	at org.hibernate.validator.internal.engine.ConfigurationImpl.<init>(ConfigurationImpl.java:110)
+	at org.hibernate.validator.internal.engine.ConfigurationImpl.<init>(ConfigurationImpl.java:86)
+	at org.hibernate.validator.HibernateValidator.createGenericConfiguration(HibernateValidator.java:41)
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:276)
+	... 37 more
+2016-12-05 12:13:22,163 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,164 [DEBUG]- Finished creating instance of bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,164 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'
+2016-12-05 12:13:22,164 [DEBUG]- Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'
+2016-12-05 12:13:22,327 [DEBUG]- Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter' to allow for resolving potential circular references
+2016-12-05 12:13:22,334 [DEBUG]- Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,335 [DEBUG]- Creating instance of bean '(inner bean)#228cea97'
+2016-12-05 12:13:22,339 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,339 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,340 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,340 [DEBUG]- Finished creating instance of bean '(inner bean)#228cea97'
+2016-12-05 12:13:22,341 [DEBUG]- Creating instance of bean '(inner bean)#497aec8c'
+2016-12-05 12:13:22,348 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,349 [DEBUG]- Finished creating instance of bean '(inner bean)#497aec8c'
+2016-12-05 12:13:22,349 [DEBUG]- Creating instance of bean '(inner bean)#26d96e5'
+2016-12-05 12:13:22,359 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,359 [DEBUG]- Finished creating instance of bean '(inner bean)#26d96e5'
+2016-12-05 12:13:22,359 [DEBUG]- Creating instance of bean '(inner bean)#1846579f'
+2016-12-05 12:13:22,366 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,368 [DEBUG]- Finished creating instance of bean '(inner bean)#1846579f'
+2016-12-05 12:13:22,368 [DEBUG]- Creating instance of bean '(inner bean)#2650f79'
+2016-12-05 12:13:22,372 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,372 [DEBUG]- Finished creating instance of bean '(inner bean)#2650f79'
+2016-12-05 12:13:22,372 [DEBUG]- Creating instance of bean '(inner bean)#5fac521d'
+2016-12-05 12:13:22,391 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,391 [DEBUG]- Finished creating instance of bean '(inner bean)#5fac521d'
+2016-12-05 12:13:22,391 [DEBUG]- Creating instance of bean '(inner bean)#3672276e'
+2016-12-05 12:13:22,399 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,400 [DEBUG]- Finished creating instance of bean '(inner bean)#3672276e'
+2016-12-05 12:13:22,400 [DEBUG]- Creating instance of bean '(inner bean)#27a2a089'
+2016-12-05 12:13:22,402 [DEBUG]- Creating instance of bean '(inner bean)#5ac6c4f2'
+2016-12-05 12:13:22,409 [DEBUG]- Invoking afterPropertiesSet() on bean with name '(inner bean)#5ac6c4f2'
+2016-12-05 12:13:22,411 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,411 [DEBUG]- Finished creating instance of bean '(inner bean)#5ac6c4f2'
+2016-12-05 12:13:22,412 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,423 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,423 [DEBUG]- Finished creating instance of bean '(inner bean)#27a2a089'
+2016-12-05 12:13:22,424 [DEBUG]- Creating instance of bean '(inner bean)#5580d62f'
+2016-12-05 12:13:22,427 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,428 [DEBUG]- Finished creating instance of bean '(inner bean)#5580d62f'
+2016-12-05 12:13:22,431 [DEBUG]- Creating instance of bean '(inner bean)#46a953cf'
+2016-12-05 12:13:22,441 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,442 [DEBUG]- Finished creating instance of bean '(inner bean)#46a953cf'
+2016-12-05 12:13:22,443 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'
+2016-12-05 12:13:22,443 [INFO ]- Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@3dd3bcd: startup date [Mon Dec 05 12:13:18 CET 2016]; root of context hierarchy
+2016-12-05 12:13:22,466 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,467 [DEBUG]- Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter'
+2016-12-05 12:13:22,467 [DEBUG]- Creating shared instance of singleton bean 'mvcUriComponentsContributor'
+2016-12-05 12:13:22,467 [DEBUG]- Creating instance of bean 'mvcUriComponentsContributor'
+2016-12-05 12:13:22,467 [DEBUG]- Eagerly caching bean 'mvcUriComponentsContributor' to allow for resolving potential circular references
+2016-12-05 12:13:22,469 [DEBUG]- Creating instance of bean '(inner bean)#602ae7b6'
+2016-12-05 12:13:22,473 [DEBUG]- Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,474 [DEBUG]- Creating instance of bean '(inner bean)#228cea97#1'
+2016-12-05 12:13:22,474 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,474 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean#0'
+2016-12-05 12:13:22,474 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,474 [DEBUG]- Finished creating instance of bean '(inner bean)#228cea97#1'
+2016-12-05 12:13:22,474 [DEBUG]- Creating instance of bean '(inner bean)#497aec8c#1'
+2016-12-05 12:13:22,475 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,475 [DEBUG]- Finished creating instance of bean '(inner bean)#497aec8c#1'
+2016-12-05 12:13:22,475 [DEBUG]- Creating instance of bean '(inner bean)#26d96e5#1'
+2016-12-05 12:13:22,477 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,477 [DEBUG]- Finished creating instance of bean '(inner bean)#26d96e5#1'
+2016-12-05 12:13:22,477 [DEBUG]- Creating instance of bean '(inner bean)#1846579f#1'
+2016-12-05 12:13:22,478 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,478 [DEBUG]- Finished creating instance of bean '(inner bean)#1846579f#1'
+2016-12-05 12:13:22,478 [DEBUG]- Creating instance of bean '(inner bean)#2650f79#1'
+2016-12-05 12:13:22,479 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,479 [DEBUG]- Finished creating instance of bean '(inner bean)#2650f79#1'
+2016-12-05 12:13:22,479 [DEBUG]- Creating instance of bean '(inner bean)#5fac521d#1'
+2016-12-05 12:13:22,482 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,482 [DEBUG]- Finished creating instance of bean '(inner bean)#5fac521d#1'
+2016-12-05 12:13:22,482 [DEBUG]- Creating instance of bean '(inner bean)#3672276e#1'
+2016-12-05 12:13:22,483 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,483 [DEBUG]- Finished creating instance of bean '(inner bean)#3672276e#1'
+2016-12-05 12:13:22,483 [DEBUG]- Creating instance of bean '(inner bean)#27a2a089#1'
+2016-12-05 12:13:22,483 [DEBUG]- Creating instance of bean '(inner bean)#5ac6c4f2#1'
+2016-12-05 12:13:22,483 [DEBUG]- Invoking afterPropertiesSet() on bean with name '(inner bean)#5ac6c4f2#1'
+2016-12-05 12:13:22,485 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,485 [DEBUG]- Finished creating instance of bean '(inner bean)#5ac6c4f2#1'
+2016-12-05 12:13:22,486 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,486 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,486 [DEBUG]- Finished creating instance of bean '(inner bean)#27a2a089#1'
+2016-12-05 12:13:22,486 [DEBUG]- Creating instance of bean '(inner bean)#5580d62f#1'
+2016-12-05 12:13:22,487 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,487 [DEBUG]- Finished creating instance of bean '(inner bean)#5580d62f#1'
+2016-12-05 12:13:22,487 [DEBUG]- Creating instance of bean '(inner bean)#46a953cf#1'
+2016-12-05 12:13:22,487 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,487 [DEBUG]- Finished creating instance of bean '(inner bean)#46a953cf#1'
+2016-12-05 12:13:22,488 [DEBUG]- Invoking afterPropertiesSet() on bean with name '(inner bean)#602ae7b6'
+2016-12-05 12:13:22,488 [INFO ]- Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@3dd3bcd: startup date [Mon Dec 05 12:13:18 CET 2016]; root of context hierarchy
+2016-12-05 12:13:22,488 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,488 [DEBUG]- Returning eagerly cached instance of singleton bean 'mvcUriComponentsContributor' that is not fully initialized yet - a consequence of a circular reference
+2016-12-05 12:13:22,490 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,490 [DEBUG]- Finished creating instance of bean '(inner bean)#602ae7b6'
+2016-12-05 12:13:22,490 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+2016-12-05 12:13:22,491 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'mvcUriComponentsContributor'
+2016-12-05 12:13:22,491 [DEBUG]- Finished creating instance of bean 'mvcUriComponentsContributor'
+2016-12-05 12:13:22,491 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+2016-12-05 12:13:22,491 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+2016-12-05 12:13:22,491 [DEBUG]- Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+2016-12-05 12:13:22,495 [DEBUG]- Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0' to allow for resolving potential circular references
+2016-12-05 12:13:22,508 [DEBUG]- Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+2016-12-05 12:13:22,508 [DEBUG]- Creating instance of bean '(inner bean)#497aec8c#2'
+2016-12-05 12:13:22,509 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,509 [DEBUG]- Finished creating instance of bean '(inner bean)#497aec8c#2'
+2016-12-05 12:13:22,509 [DEBUG]- Creating instance of bean '(inner bean)#26d96e5#2'
+2016-12-05 12:13:22,510 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,510 [DEBUG]- Finished creating instance of bean '(inner bean)#26d96e5#2'
+2016-12-05 12:13:22,511 [DEBUG]- Creating instance of bean '(inner bean)#1846579f#2'
+2016-12-05 12:13:22,511 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,511 [DEBUG]- Finished creating instance of bean '(inner bean)#1846579f#2'
+2016-12-05 12:13:22,512 [DEBUG]- Creating instance of bean '(inner bean)#2650f79#2'
+2016-12-05 12:13:22,513 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,513 [DEBUG]- Finished creating instance of bean '(inner bean)#2650f79#2'
+2016-12-05 12:13:22,513 [DEBUG]- Creating instance of bean '(inner bean)#5fac521d#2'
+2016-12-05 12:13:22,516 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,516 [DEBUG]- Finished creating instance of bean '(inner bean)#5fac521d#2'
+2016-12-05 12:13:22,516 [DEBUG]- Creating instance of bean '(inner bean)#3672276e#2'
+2016-12-05 12:13:22,516 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,516 [DEBUG]- Finished creating instance of bean '(inner bean)#3672276e#2'
+2016-12-05 12:13:22,517 [DEBUG]- Creating instance of bean '(inner bean)#27a2a089#2'
+2016-12-05 12:13:22,517 [DEBUG]- Creating instance of bean '(inner bean)#5ac6c4f2#2'
+2016-12-05 12:13:22,517 [DEBUG]- Invoking afterPropertiesSet() on bean with name '(inner bean)#5ac6c4f2#2'
+2016-12-05 12:13:22,518 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,518 [DEBUG]- Finished creating instance of bean '(inner bean)#5ac6c4f2#2'
+2016-12-05 12:13:22,518 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,519 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,519 [DEBUG]- Finished creating instance of bean '(inner bean)#27a2a089#2'
+2016-12-05 12:13:22,520 [DEBUG]- Creating instance of bean '(inner bean)#319c3a25'
+2016-12-05 12:13:22,520 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,520 [DEBUG]- Finished creating instance of bean '(inner bean)#319c3a25'
+2016-12-05 12:13:22,520 [DEBUG]- Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+2016-12-05 12:13:22,520 [DEBUG]- Looking for exception mappings: org.springframework.context.support.ClassPathXmlApplicationContext@3dd3bcd: startup date [Mon Dec 05 12:13:18 CET 2016]; root of context hierarchy
+2016-12-05 12:13:22,522 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2016-12-05 12:13:22,522 [DEBUG]- Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+2016-12-05 12:13:22,522 [DEBUG]- Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+2016-12-05 12:13:22,522 [DEBUG]- Creating instance of bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+2016-12-05 12:13:22,523 [DEBUG]- Eagerly caching bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0' to allow for resolving potential circular references
+2016-12-05 12:13:22,524 [DEBUG]- Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'

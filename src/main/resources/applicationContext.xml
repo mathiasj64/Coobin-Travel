@@ -15,9 +15,9 @@
     <!-- MySQL Datasource with Commons DBCP connection pooling -->
     <bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/reservation?maxAllowedPacket=20000000"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+        <property name="url" value="jdbc:mysql://138.68.78.190:3306/reservation?maxAllowedPacket=20000000"/>
+        <property name="username" value="casperl"/>
+        <property name="password" value="tms32xpb"/>
     </bean>
 
     <!-- EntityManagerFactory -->

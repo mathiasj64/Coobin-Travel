@@ -1,0 +1,17 @@
+body {
+    padding: 0;
+    margin: auto;
+    background-size: 100%;
+    background-color: #C9DAF8
+}
+
+.defaultBorder {
+    border: 1px solid #000000;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.colorBackground {
+    background: rgba(204, 204, 204, 0.75);
+    border-radius: 15px;
+}

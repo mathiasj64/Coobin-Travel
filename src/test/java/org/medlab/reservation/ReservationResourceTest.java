@@ -50,7 +50,7 @@ public class ReservationResourceTest {
                 when().
                 post("api/reservation/13").then().statusCode(200);
     }
-
+    
     @After
     public void tearDown() {
         List reservations = reservationDao.findByFlightID(generatedId);

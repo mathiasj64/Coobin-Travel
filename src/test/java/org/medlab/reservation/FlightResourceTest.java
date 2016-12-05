@@ -31,7 +31,6 @@ public class FlightResourceTest {
 
     @Before
     public void setup() {
-
         Airline airline = new Airline();
         airline.setName("American Airlines");
 
@@ -56,18 +55,15 @@ public class FlightResourceTest {
         flightInstance.setDate(1480118400000L); // 2016-11-26
 
         flight1 = flightInstanceDao.create(flightInstance);
-
     }
 
     @Test
     public void testGetAvailableFlightsFromAndSince() {
-
         given().when().get("api/flights/NYC/2016-11-26Z/123").then().statusCode(200);
     }
 
     @Test
     public void testGetAvailableFlightsFromToAndSince() {
-
         given().when().get("api/flights/NYC/CHI/2016-11-26Z/123").then().statusCode(200);
     }
 

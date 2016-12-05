@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="">
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="dataSource" password="tms32xpb" type="javax.sql.DataSource" url="jdbc:mysql://138.68.78.190:3306/reservation?maxAllowedPacket=20000000" username="casperl"/>
+</Context>
