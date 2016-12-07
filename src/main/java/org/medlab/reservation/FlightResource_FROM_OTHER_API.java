@@ -40,14 +40,15 @@ public class FlightResource_FROM_OTHER_API {
     private UriInfo context;
 
     public FlightResource_FROM_OTHER_API() {
+        populateList();
     }
 
-    public List<String> listOfUrls() {
-        List<String> urls = new ArrayList<String>();
+    List<String> urls = new ArrayList<String>();
+
+    public void populateList() {
         urls.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
 //        airlines.add("http://138.68.78.190:8080/");
 //        urls.add("http://localhost:8080/api/flights/");
-        return urls;
     }
 
     @GET
@@ -62,9 +63,9 @@ public class FlightResource_FROM_OTHER_API {
     ) throws MalformedURLException, ProtocolException, IOException {
 
         String result = "";
-        
-        for (int i = 0; i < listOfUrls().size(); i++) {
-            String url = listOfUrls().get(i);
+
+        for (int i = 0; i < urls.size(); i++) {
+            String url = urls.get(i);
             URL obj = new URL(url + from + "/" + to + "/" + date + "/" + tickets);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -87,7 +88,7 @@ public class FlightResource_FROM_OTHER_API {
                 response.append(inputLine);
             }
             in.close();
-            if (i != listOfUrls().size() - 1) {
+            if (i != urls.size() - 1) {
                 result += response.toString() + ",";
             } else {
                 result += response.toString();
@@ -110,10 +111,10 @@ public class FlightResource_FROM_OTHER_API {
             @PathParam("tickets") int tickets
     ) throws MalformedURLException, ProtocolException, IOException {
 
-       String result = "";
-        
-        for (int i = 0; i < listOfUrls().size(); i++) {
-            String url = listOfUrls().get(i);
+        String result = "";
+
+        for (int i = 0; i < urls.size(); i++) {
+            String url = urls.get(i);
             URL obj = new URL(url + from + "/" + date + "/" + tickets);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -136,7 +137,7 @@ public class FlightResource_FROM_OTHER_API {
                 response.append(inputLine);
             }
             in.close();
-            if (i != listOfUrls().size() - 1) {
+            if (i != urls.size() - 1) {
                 result += response.toString() + ",";
             } else {
                 result += response.toString();
