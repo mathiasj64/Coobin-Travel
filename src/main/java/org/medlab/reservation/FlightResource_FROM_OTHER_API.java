@@ -46,9 +46,9 @@ public class FlightResource_FROM_OTHER_API {
     List<String> urls = new ArrayList<String>();
 
     public void populateList() {
-        urls.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
-//        airlines.add("http://138.68.78.190:8080/");
-//        urls.add("http://localhost:8080/api/flights/");
+//        urls.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
+        urls.add("http://localhost:8080/api/flights/");
+//        urls.add("http://138.68.78.190:8080/");
     }
 
     @GET
@@ -88,13 +88,14 @@ public class FlightResource_FROM_OTHER_API {
                 response.append(inputLine);
             }
             in.close();
-            if (i != urls.size() - 1) {
-                result += response.toString() + ",";
-            } else {
-                result += response.toString();
-            }
+//            if (i != urls.size() - 1) {
+//                result += response.toString() + ",";
+//            } else {
+//                result += response.toString();
+//            }
+            result += response.toString();
         }
-
+        System.out.println(result);
 //        String url = "http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets;
         //print result
 //        System.out.println(response.toString());

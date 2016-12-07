@@ -1,88 +1,101 @@
 <!DOCTYPE html>
 <html ng-app="CoobinApp" ng-controller="mainController">
-<head>
-    <title>Coobin Travel - Frontpage</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-    <script src="angular/angular.js" type="text/javascript"></script>
-    <link href="style.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<center>
-    <img src="Cobin Travel logo.png" alt=""/>
+    <head>
+        <title>Coobin Travel - Frontpage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+        <script src="angular/angular.js" type="text/javascript"></script>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+    <center>
+        <img src="Cobin Travel logo.png" alt=""/>
 
 
-    <div class="container colorBackground">
-        <br>
-        <form ng-submit="airlineFactory.getFlights(from, to, myDate, tickets)">
-            <div class="row">
-                <label class="col-sm-3" for="usr">From</label>
-                <label class="col-sm-3" for="usr">To</label>
-                <label class="col-sm-3" for="usr">Date</label>
-                <label class="col-sm-3" for="usr">Passenger</label>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <select class="form-control" type="text" name="dropdown" ng-model="from" required="">
-                        <option value=""></option>
-                        <option value="SXF">Berlin</option>
-                        <option value="CPH">Copenhagen</option>
-                        <option value="STN">London</option>
-                        <option value="CDG">Paris</option>
-                        <option value="BCN">Barcelona</option>
-                    </select>
-                </div>
-                <div class="col-sm-3">
-                    <select class="form-control" type="text" name="dropdown" ng-model="to">
-                        <option value=""></option>
-                        <option value="SXF">Berlin</option>
-                        <option value="CPH">Copenhagen</option>
-                        <option value="STN">London</option>
-                        <option value="CDG">Paris</option>
-                        <option value="BCN">Barcelona</option>
-                    </select>
-                </div>
-                <div class="col-sm-3"><input type="date" class="form-control" ng-model="myDate" required=""></div>
-                <div class="col-sm-3"><input type="number" class="form-control" ng-model="tickets" required=""></div>
-            </div>
+        <div class="container colorBackground">
             <br>
-            <button type="submit" class="btn btn-primary">SEARCH</button>
-        </form>
+            <form ng-submit="airlineFactory.getFlights(from, to, myDate, tickets)">
+                <div class="row">
+                    <label class="col-sm-3" for="usr">From</label>
+                    <label class="col-sm-3" for="usr">To</label>
+                    <label class="col-sm-3" for="usr">Date</label>
+                    <label class="col-sm-3" for="usr">Passenger</label>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <select class="form-control" type="text" name="dropdown" ng-model="from" required="">
+                            <option value=""></option>
+                            <option value="SXF">Berlin</option>
+                            <option selected value="CPH">Copenhagen</option>
+                            <option value="STN">London</option>
+                            <option value="CDG">Paris</option>
+                            <option value="BCN">Barcelona</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" type="text" name="dropdown" ng-model="to">
+                            <option value=""></option>
+                            <option selected value="SXF">Berlin</option>
+                            <option value="CPH">Copenhagen</option>
+                            <option value="STN">London</option>
+                            <option value="CDG">Paris</option>
+                            <option value="BCN">Barcelona</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3"><input type="date" class="form-control" ng-model="myDate" required=""></div>
+                    <div class="col-sm-3"><input value="1" type="number" class="form-control" ng-model="tickets" required=""></div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">SEARCH</button>
+            </form>
+            <br>
+        </div>
         <br>
-    </div>
-    <br>
-    <div class="well">
+        <div class="well">
 
-        <table class="table" cellpadding="50">
-            <tr>
-                <th>Airline</th>
-                <th>Date</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Travel time</th>
-                <th>Seats</th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="flight in airlineFactory.airlines.flights">
-                <td>{{airlineFactory.airlines.airline}}</td>
-                <td>{{flight.date}}</td>
-                <td>{{flight.origin}}</td>
-                <td>{{flight.destination}}</td>
-                <td>{{flight.traveltime}}</td>
-                <td>{{flight.numberOfSeats}}</td>
-                <td>{{flight.totalPrice}}</td>
-                <td>
-                    <button>SELECT</button>
-                </td>
-            </tr>
+            <table class="table" cellpadding="50">
+                <tr>
+                    <th>Airline</th>
+                    <th>Date</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Travel time</th>
+                    <th>Seats</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                <div ng-repeat="airlines in airlineFactory.airlines">
+                    <tr ng-repeat="flight in airlines.flights">
+                        <td>{{airlines.airline}}</td>
+                        <td>{{flight.date}}</td>
+                        <td>{{flight.origin}}</td>
+                        <td>{{flight.destination}}</td>
+                        <td>{{flight.traveltime}}</td>
+                        <td>{{flight.numberOfSeats}}</td>
+                        <td>{{flight.totalPrice}}</td>
+                        <td>
+                            <button>SELECT</button>
+                        </td>
+                </div>
+                <!--                    <tr ng-repeat="flight in airlineFactory.airlines.flights">
+                                        <td>{{airlineFactory.airlines.airline}}</td>
+                                        <td>{{flight.date}}</td>
+                                        <td>{{flight.origin}}</td>
+                                        <td>{{flight.destination}}</td>
+                                        <td>{{flight.traveltime}}</td>
+                                        <td>{{flight.numberOfSeats}}</td>
+                                        <td>{{flight.totalPrice}}</td>
+                                        <td>
+                                            <button>SELECT</button>
+                                        </td>
+                                    </tr>-->
 
-        </table>
-    </div>
+            </table>
+        </div>
 
-</center>
+    </center>
 </body>
 </html>
