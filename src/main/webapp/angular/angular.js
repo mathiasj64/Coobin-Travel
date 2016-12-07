@@ -37,7 +37,7 @@ angular.module("CoobinApp", [])
 
             if (to === null || to === undefined || to === "") {
                 console.log("Searching for flights");
-                return $http.get("/api/flight/" + from + "/" + date.toISOString() + "/" + tickets)
+                return $http.get("/api/allairlines/" + from + "/" + date.toISOString() + "/" + tickets)
                     .success(function (data) {
                         console.log("Success! (get flight from)");
                         //clear list before adding flights
@@ -49,7 +49,7 @@ angular.module("CoobinApp", [])
                     });
             } else {
                 console.log("Searching for flights");
-                return $http.get("/api/flight/" + from + "/" + to + "/" + date.toISOString() + "/" + tickets)
+                return $http.get("/api/allairlines/" + from + "/" + to + "/" + date.toISOString() + "/" + tickets)
                     .success(function (data) {
                         console.log("Success! get flight from to");
                         f.airlines.splice(0, f.airlines.length);
