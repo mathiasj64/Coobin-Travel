@@ -122,18 +122,18 @@ public class FlightResource {
     public Response save() {
 
         Airline airline = new Airline();
-        airline.setName("American Airlines");
+        airline.setName("Cobin Airline");
 
         Airport airport = new Airport();
-        airport.setIATACode("NY");
-        airport.setName("NY");
+        airport.setIATACode("CPH");
+        airport.setName("Copenhagen");
 
         Airport airport2 = new Airport();
-        airport2.setIATACode("LAX");
-        airport2.setName("LAX");
+        airport2.setIATACode("SXF");
+        airport2.setName("Berlin");
 
         Flight flight = new Flight();
-        flight.setFlightNumber("QE1234");
+        flight.setFlightNumber("Cyka1337");
         flight.setOrigin(airport);
         flight.setDestination(airport2);
         flight.setAirline(airline);
@@ -142,7 +142,7 @@ public class FlightResource {
         flightInstance.setFlightId("00FZ5");
         flightInstance.setAvailableSeats(145);
         flightInstance.setFlight(flight);
-        flightInstance.setDate(1480118400000L);
+        flightInstance.setDate(1514678400000L);
 
         FlightInstance flight1 = flightInstanceDao.create(flightInstance);
 

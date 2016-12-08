@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*package org.medlab.reservation;
 
 import org.junit.After;

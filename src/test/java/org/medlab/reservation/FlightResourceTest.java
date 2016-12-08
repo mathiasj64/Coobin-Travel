@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/* package org.medlab.reservation;
+ package org.medlab.reservation;
 
 import org.junit.After;
 import org.junit.Before;
@@ -74,4 +73,3 @@ public class FlightResourceTest {
     }
 
 }
-*/
