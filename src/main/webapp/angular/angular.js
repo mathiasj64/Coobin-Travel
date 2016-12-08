@@ -3,7 +3,6 @@ angular.module("CoobinApp", [])
 //Main controller to handle the 'search' part of the system.
         .controller("mainController", ["$scope", "airlineFactory", function ($scope, airlineFactory) {
                 $scope.airlineFactory = airlineFactory;
-
             }])
 
 
@@ -42,13 +41,13 @@ angular.module("CoobinApp", [])
                                     console.log("Success! (get flight from)");
                                     //clear list before adding flights
                                     f.airlines.splice(0, f.airlines.length);
-                                    for (var i = 0; i < data.length; i++) {
-                                        f.airlines.push(data[i]);
-                                    }
-                                    console.log(f.airlines);
+//                                    for (var i = 0; i < data.length; i++) {
+//                                        f.airlines.push(data[i]);
+//                                    }
+//                                    console.log(f.airlines);
                                     //Angular copy creates a deep copy of source, which should be an object or an array
                                     //That object/array cannot be changed.
-//                                    angular.copy(data, f.airlines);
+                                    angular.copy(data, f.airlines);
                                 });
                     } else {
                         console.log("Searching for flights");
@@ -56,12 +55,11 @@ angular.module("CoobinApp", [])
                                 .success(function (data) {
                                     console.log("Success! get flight from to");
                                     f.airlines.splice(0, f.airlines.length);
-                                    for (var i = 0; i < data.length; i++) {
-                                        console.log(data[i])
-                                        f.airlines.push(data[i]);
-                                    }
-                                    console.log(f.airlines);
-//                                    angular.copy(data, f.airlines);
+//                                    for (var i = 0; i < data.length; i++) {
+//                                        console.log(data[i])
+//                                        f.airlines.push(data[i]);
+//                                    }
+                                    angular.copy(data, f.airlines);
                                 });
                     }
                 };

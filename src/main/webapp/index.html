@@ -67,7 +67,7 @@
                     <th>Price</th>
                     <th></th>
                 </tr>
-                <div ng-repeat="airlines in airlineFactory.airlines">
+                <tbody ng-repeat="airlines in airlineFactory.airlines">
                     <tr ng-repeat="flight in airlines.flights">
                         <td>{{airlines.airline}}</td>
                         <td>{{flight.date}}</td>
@@ -79,19 +79,8 @@
                         <td>
                             <button>SELECT</button>
                         </td>
-                </div>
-                <!--                    <tr ng-repeat="flight in airlineFactory.airlines.flights">
-                                        <td>{{airlineFactory.airlines.airline}}</td>
-                                        <td>{{flight.date}}</td>
-                                        <td>{{flight.origin}}</td>
-                                        <td>{{flight.destination}}</td>
-                                        <td>{{flight.traveltime}}</td>
-                                        <td>{{flight.numberOfSeats}}</td>
-                                        <td>{{flight.totalPrice}}</td>
-                                        <td>
-                                            <button>SELECT</button>
-                                        </td>
-                                    </tr>-->
+                    </tr>
+                </tbody>
 
             </table>
         </div>

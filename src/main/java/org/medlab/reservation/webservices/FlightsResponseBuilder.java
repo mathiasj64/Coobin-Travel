@@ -38,6 +38,9 @@ public class FlightsResponseBuilder {
                 flightsResponseList.add(new FlightsResponse(airline, flightResponseList));
             }
         }
+        
+        
+        System.out.println("list: " + flightsResponseList.get(0));
 
         return flightsResponseList;
     }

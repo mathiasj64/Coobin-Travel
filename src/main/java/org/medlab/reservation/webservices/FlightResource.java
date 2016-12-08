@@ -70,6 +70,7 @@ public class FlightResource {
         }
 
         List flightsResponse = FlightsResponseBuilder.build(flights);
+        System.out.println("list2" + flightsResponse);
         return Response.status(200).entity(flightsResponse).build();
     }
 
@@ -112,6 +113,11 @@ public class FlightResource {
         }
 
         List flightsResponse = FlightsResponseBuilder.build(flights);
+        
+        String a = flightsResponse.get(0).toString();
+                System.out.println("list2" + flightsResponse);
+                
+
         return Response.status(200).entity(flightsResponse).build();
     }
 

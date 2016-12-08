@@ -46,7 +46,7 @@ public class FlightResource_FROM_OTHER_API {
     List<String> urls = new ArrayList<String>();
 
     public void populateList() {
-//        urls.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
+        urls.add("http://airline-plaul.rhcloud.com/api/flightinfo/");
         urls.add("http://localhost:8080/api/flights/");
 //        urls.add("http://138.68.78.190:8080/");
     }
@@ -62,7 +62,7 @@ public class FlightResource_FROM_OTHER_API {
             @PathParam("tickets") int tickets
     ) throws MalformedURLException, ProtocolException, IOException {
 
-        String result = "";
+        String result = "[";
 
         for (int i = 0; i < urls.size(); i++) {
             String url = urls.get(i);
@@ -88,18 +88,22 @@ public class FlightResource_FROM_OTHER_API {
                 response.append(inputLine);
             }
             in.close();
-//            if (i != urls.size() - 1) {
-//                result += response.toString() + ",";
-//            } else {
-//                result += response.toString();
-//            }
-            result += response.toString();
+
+            String json = response.toString();
+
+            if (json.startsWith("[") && json.endsWith("]")) {
+                json = json.substring(1, json.length() - 1);
+//                json.replaceAll("\\[", "").replaceAll("\\]", "");
+            }
+            if (i < urls.size() - 1) {
+                result += json + ",";
+            } else {
+                result += json;
+            }
+//            result += json;
         }
+        result += "]";
         System.out.println(result);
-//        String url = "http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets;
-        //print result
-//        System.out.println(response.toString());
-//        Gson gson = new Gson();
         return result;
     }
 
@@ -138,18 +142,18 @@ public class FlightResource_FROM_OTHER_API {
                 response.append(inputLine);
             }
             in.close();
-            if (i != urls.size() - 1) {
-                result += response.toString() + ",";
-            } else {
-                result += response.toString();
-            }
+//            if (i != urls.size() - 1) {
+//                result += response.toString() + ",";
+//            } else {
+//                result += response.toString();
+//            }
+            result += response.toString();
         }
-
+        System.out.println(result);
 //        String url = "http://airline-plaul.rhcloud.com/api/flightinfo/" + from + "/" + to + "/" + date + "/" + tickets;
         //print result
 //        System.out.println(response.toString());
 //        Gson gson = new Gson();
         return result;
     }
-
 }
